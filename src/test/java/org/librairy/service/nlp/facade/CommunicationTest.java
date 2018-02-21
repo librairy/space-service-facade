@@ -30,6 +30,11 @@ public class CommunicationTest {
             }
 
             @Override
+            public Point get(String id) throws AvroRemoteException {
+                return Point.newBuilder().setId(id).setName("example").setShape(Arrays.asList(new Double[]{0.1,0.8,0.1})).build();
+            }
+
+            @Override
             public boolean remove(String id) throws AvroRemoteException {
                 return false;
             }
@@ -37,6 +42,11 @@ public class CommunicationTest {
             @Override
             public boolean removeAll() throws AvroRemoteException {
                 return false;
+            }
+
+            @Override
+            public List<Point> list(int size, String offset) throws AvroRemoteException {
+                return Collections.emptyList();
             }
 
             @Override
@@ -66,8 +76,10 @@ public class CommunicationTest {
         client.open(host,port);
 
         client.add(Point.newBuilder().setId("id").setName("name").setDescription("description").setShape(Arrays.asList(new Double[]{0.2,0.3})).build());
+        client.get("id");
         client.remove("id");
         client.removeAll();
+        client.list(20,null);
         client.index(0.9);
         client.neighbours("id",10,null);
         client.similar(Arrays.asList(new Double[]{0.1,0.2}),10,"paper");

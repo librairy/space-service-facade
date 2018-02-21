@@ -20,6 +20,10 @@
        "request": [{"name": "point", "type": "Point"}],
        "response": "boolean"
      },
+     "get": {
+       "request": [{"name": "id", "type": "string"}],
+       "response": "Point"
+     },
      "remove":{
        "request": [{"name": "id", "type": "string"}],
        "response": "boolean"
@@ -27,6 +31,10 @@
      "removeAll":{
        "request": [],
        "response": "boolean"
+     },
+     "list":{
+       "request": [{"name": "size", "type": "int"},{"name": "offset", "type": "string"}],
+       "response": {"type" : "array","items":"Point"}
      },
      "index":{
        "request": [{"name": "threshold", "type": "double"}],

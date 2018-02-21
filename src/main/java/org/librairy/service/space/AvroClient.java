@@ -44,6 +44,15 @@ public class AvroClient {
         return result;
     }
 
+    public Point get(String id) throws AvroRemoteException {
+
+        // fill in the Message record and send it
+        LOG.debug("Calling proxy.get with:" + id);
+        Point result = proxy.get(id);
+        LOG.debug("Result: " + result);
+        return result;
+    }
+
     public Boolean remove(String id) throws AvroRemoteException {
 
         // fill in the Message record and send it
@@ -58,6 +67,15 @@ public class AvroClient {
         // fill in the Message record and send it
         LOG.debug("Calling proxy.removeAll");
         boolean result = proxy.removeAll();
+        LOG.debug("Result: " + result);
+        return result;
+    }
+
+    public List<Point> list(Integer size, String offset) throws AvroRemoteException {
+
+        // fill in the Message record and send it
+        LOG.debug("Calling proxy.list with size: '" + size+"', offset: " + offset);
+        List<Point> result = proxy.list(size,offset == null?"":offset);
         LOG.debug("Result: " + result);
         return result;
     }
