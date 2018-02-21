@@ -7,12 +7,11 @@ package org.librairy.service.space.facade.model;
 @SuppressWarnings("all")
 @org.apache.avro.specific.AvroGenerated
 public class Point extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"Point\",\"namespace\":\"org.librairy.service.space.facade.model\",\"fields\":[{\"name\":\"id\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"name\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"},\"default\":\"\"},{\"name\":\"type\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"},\"default\":\"\"},{\"name\":\"description\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"},\"default\":\"\"},{\"name\":\"shape\",\"type\":{\"type\":\"array\",\"items\":\"double\"}}]}");
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"Point\",\"namespace\":\"org.librairy.service.space.facade.model\",\"fields\":[{\"name\":\"id\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"name\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"},\"default\":\"\"},{\"name\":\"type\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"},\"default\":\"\"},{\"name\":\"shape\",\"type\":{\"type\":\"array\",\"items\":\"double\"}}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
    private java.lang.String id;
    private java.lang.String name;
    private java.lang.String type;
-   private java.lang.String description;
    private java.util.List<java.lang.Double> shape;
 
   /**
@@ -25,11 +24,10 @@ public class Point extends org.apache.avro.specific.SpecificRecordBase implement
   /**
    * All-args constructor.
    */
-  public Point(java.lang.String id, java.lang.String name, java.lang.String type, java.lang.String description, java.util.List<java.lang.Double> shape) {
+  public Point(java.lang.String id, java.lang.String name, java.lang.String type, java.util.List<java.lang.Double> shape) {
     this.id = id;
     this.name = name;
     this.type = type;
-    this.description = description;
     this.shape = shape;
   }
 
@@ -40,8 +38,7 @@ public class Point extends org.apache.avro.specific.SpecificRecordBase implement
     case 0: return id;
     case 1: return name;
     case 2: return type;
-    case 3: return description;
-    case 4: return shape;
+    case 3: return shape;
     default: throw new org.apache.avro.AvroRuntimeException("Bad index");
     }
   }
@@ -52,8 +49,7 @@ public class Point extends org.apache.avro.specific.SpecificRecordBase implement
     case 0: id = (java.lang.String)value$; break;
     case 1: name = (java.lang.String)value$; break;
     case 2: type = (java.lang.String)value$; break;
-    case 3: description = (java.lang.String)value$; break;
-    case 4: shape = (java.util.List<java.lang.Double>)value$; break;
+    case 3: shape = (java.util.List<java.lang.Double>)value$; break;
     default: throw new org.apache.avro.AvroRuntimeException("Bad index");
     }
   }
@@ -104,21 +100,6 @@ public class Point extends org.apache.avro.specific.SpecificRecordBase implement
   }
 
   /**
-   * Gets the value of the 'description' field.
-   */
-  public java.lang.String getDescription() {
-    return description;
-  }
-
-  /**
-   * Sets the value of the 'description' field.
-   * @param value the value to set.
-   */
-  public void setDescription(java.lang.String value) {
-    this.description = value;
-  }
-
-  /**
    * Gets the value of the 'shape' field.
    */
   public java.util.List<java.lang.Double> getShape() {
@@ -157,7 +138,6 @@ public class Point extends org.apache.avro.specific.SpecificRecordBase implement
     private java.lang.String id;
     private java.lang.String name;
     private java.lang.String type;
-    private java.lang.String description;
     private java.util.List<java.lang.Double> shape;
 
     /** Creates a new Builder */
@@ -180,13 +160,9 @@ public class Point extends org.apache.avro.specific.SpecificRecordBase implement
         this.type = data().deepCopy(fields()[2].schema(), other.type);
         fieldSetFlags()[2] = true;
       }
-      if (isValidValue(fields()[3], other.description)) {
-        this.description = data().deepCopy(fields()[3].schema(), other.description);
+      if (isValidValue(fields()[3], other.shape)) {
+        this.shape = data().deepCopy(fields()[3].schema(), other.shape);
         fieldSetFlags()[3] = true;
-      }
-      if (isValidValue(fields()[4], other.shape)) {
-        this.shape = data().deepCopy(fields()[4].schema(), other.shape);
-        fieldSetFlags()[4] = true;
       }
     }
     
@@ -205,13 +181,9 @@ public class Point extends org.apache.avro.specific.SpecificRecordBase implement
         this.type = data().deepCopy(fields()[2].schema(), other.type);
         fieldSetFlags()[2] = true;
       }
-      if (isValidValue(fields()[3], other.description)) {
-        this.description = data().deepCopy(fields()[3].schema(), other.description);
+      if (isValidValue(fields()[3], other.shape)) {
+        this.shape = data().deepCopy(fields()[3].schema(), other.shape);
         fieldSetFlags()[3] = true;
-      }
-      if (isValidValue(fields()[4], other.shape)) {
-        this.shape = data().deepCopy(fields()[4].schema(), other.shape);
-        fieldSetFlags()[4] = true;
       }
     }
 
@@ -290,31 +262,6 @@ public class Point extends org.apache.avro.specific.SpecificRecordBase implement
       return this;
     }
 
-    /** Gets the value of the 'description' field */
-    public java.lang.String getDescription() {
-      return description;
-    }
-    
-    /** Sets the value of the 'description' field */
-    public org.librairy.service.space.facade.model.Point.Builder setDescription(java.lang.String value) {
-      validate(fields()[3], value);
-      this.description = value;
-      fieldSetFlags()[3] = true;
-      return this; 
-    }
-    
-    /** Checks whether the 'description' field has been set */
-    public boolean hasDescription() {
-      return fieldSetFlags()[3];
-    }
-    
-    /** Clears the value of the 'description' field */
-    public org.librairy.service.space.facade.model.Point.Builder clearDescription() {
-      description = null;
-      fieldSetFlags()[3] = false;
-      return this;
-    }
-
     /** Gets the value of the 'shape' field */
     public java.util.List<java.lang.Double> getShape() {
       return shape;
@@ -322,21 +269,21 @@ public class Point extends org.apache.avro.specific.SpecificRecordBase implement
     
     /** Sets the value of the 'shape' field */
     public org.librairy.service.space.facade.model.Point.Builder setShape(java.util.List<java.lang.Double> value) {
-      validate(fields()[4], value);
+      validate(fields()[3], value);
       this.shape = value;
-      fieldSetFlags()[4] = true;
+      fieldSetFlags()[3] = true;
       return this; 
     }
     
     /** Checks whether the 'shape' field has been set */
     public boolean hasShape() {
-      return fieldSetFlags()[4];
+      return fieldSetFlags()[3];
     }
     
     /** Clears the value of the 'shape' field */
     public org.librairy.service.space.facade.model.Point.Builder clearShape() {
       shape = null;
-      fieldSetFlags()[4] = false;
+      fieldSetFlags()[3] = false;
       return this;
     }
 
@@ -347,8 +294,7 @@ public class Point extends org.apache.avro.specific.SpecificRecordBase implement
         record.id = fieldSetFlags()[0] ? this.id : (java.lang.String) defaultValue(fields()[0]);
         record.name = fieldSetFlags()[1] ? this.name : (java.lang.String) defaultValue(fields()[1]);
         record.type = fieldSetFlags()[2] ? this.type : (java.lang.String) defaultValue(fields()[2]);
-        record.description = fieldSetFlags()[3] ? this.description : (java.lang.String) defaultValue(fields()[3]);
-        record.shape = fieldSetFlags()[4] ? this.shape : (java.util.List<java.lang.Double>) defaultValue(fields()[4]);
+        record.shape = fieldSetFlags()[3] ? this.shape : (java.util.List<java.lang.Double>) defaultValue(fields()[3]);
         return record;
       } catch (Exception e) {
         throw new org.apache.avro.AvroRuntimeException(e);

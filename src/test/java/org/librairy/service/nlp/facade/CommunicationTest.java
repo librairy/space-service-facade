@@ -75,7 +75,7 @@ public class CommunicationTest {
         server.open(host,port);
         client.open(host,port);
 
-        client.add(Point.newBuilder().setId("id").setName("name").setDescription("description").setShape(Arrays.asList(new Double[]{0.2,0.3})).build());
+        client.add(Point.newBuilder().setId("id").setName("name").setShape(Arrays.asList(new Double[]{0.2,0.3})).build());
         client.get("id");
         client.remove("id");
         client.removeAll();

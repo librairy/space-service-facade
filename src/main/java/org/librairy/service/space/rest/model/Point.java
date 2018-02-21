@@ -52,12 +52,6 @@ public class Point extends org.librairy.service.space.facade.model.Point {
     }
 
     @Override
-    @ApiModelProperty(value = "brief summary of point meaning")
-    public String getDescription() {
-        return super.getDescription();
-    }
-
-    @Override
     @ApiModelProperty(value="array of doubles")
     public List<Double> getShape() {
         return super.getShape();
