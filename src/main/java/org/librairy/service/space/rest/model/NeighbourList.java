@@ -8,16 +8,16 @@ import java.util.List;
  * @author Badenes Olmedo, Carlos <cbadenes@fi.upm.es>
  */
 
-public class NeighboursResult {
+public class NeighbourList {
 
     @ApiModelProperty(notes="related points")
     private List<Neighbour> neighbours;
 
-    public NeighboursResult(List<Neighbour> neighbours) {
+    public NeighbourList(List<Neighbour> neighbours) {
         this.neighbours = neighbours;
     }
 
-    public NeighboursResult(){};
+    public NeighbourList(){};
 
     public List<Neighbour> getNeighbours() {
         return neighbours;
