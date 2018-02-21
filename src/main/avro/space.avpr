@@ -1,0 +1,44 @@
+{"namespace": "org.librairy.service.space.facade.model",
+ "protocol": "SpaceService",
+
+ "types": [
+    {"name": "Point", "type": "record", "fields": [
+      {"name":"id","type":"string"},
+      {"name":"name","type":"string","default": ""},
+      {"name":"type","type":"string","default": ""},
+      {"name":"description","type":"string", "default": ""},
+      {"name":"shape","type":{"type" : "array","items":"double"}}
+    ]},
+     {"name": "Neighbour", "type": "record", "fields": [
+       {"name":"point","type":"Point"},
+       {"name":"score","type":"double"}
+     ]}
+ ],
+
+ "messages": {
+     "add": {
+       "request": [{"name": "point", "type": "Point"}],
+       "response": "boolean"
+     },
+     "remove":{
+       "request": [{"name": "id", "type": "string"}],
+       "response": "boolean"
+     },
+     "removeAll":{
+       "request": [],
+       "response": "boolean"
+     },
+     "index":{
+       "request": [{"name": "threshold", "type": "double"}],
+       "response": "boolean"
+     },
+     "neighbours":{
+       "request": [{"name": "id", "type": "string"},{"name": "number", "type": "int"},{"name": "type", "type": "string", "default": ""}],
+       "response": {"type" : "array","items":"Neighbour"}
+     },
+     "similar":{
+       "request": [{"name": "shape", "type": {"type" : "array","items":"double"}},{"name": "number", "type": "int"},{"name": "type", "type": "string", "default": ""}],
+       "response": {"type" : "array","items":"Neighbour"}
+     }
+ }
+}
