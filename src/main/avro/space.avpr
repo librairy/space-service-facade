@@ -4,14 +4,14 @@
  "types": [
     {"name": "Point", "type": "record", "fields": [
       {"name":"id","type":"string"},
-      {"name":"name","type":"string","default": ""},
-      {"name":"type","type":"string","default": ""},
+      {"name":"name","type":"string","default": "unknown"},
+      {"name":"type","type":"string","default": "document"},
       {"name":"shape","type":{"type" : "array","items":"double"}}
     ]},
      {"name": "Neighbour", "type": "record", "fields": [
        {"name":"id","type":"string"},
-       {"name":"name","type":"string","default": ""},
-       {"name":"type","type":"string","default": ""},
+       {"name":"name","type":"string","default": "unknown"},
+       {"name":"type","type":"string","default": "document"},
        {"name":"score","type":"double"}
      ]}
  ],

@@ -7,7 +7,7 @@ package org.librairy.service.space.facade.model;
 @SuppressWarnings("all")
 @org.apache.avro.specific.AvroGenerated
 public class Point extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"Point\",\"namespace\":\"org.librairy.service.space.facade.model\",\"fields\":[{\"name\":\"id\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"name\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"},\"default\":\"\"},{\"name\":\"type\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"},\"default\":\"\"},{\"name\":\"shape\",\"type\":{\"type\":\"array\",\"items\":\"double\"}}]}");
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"Point\",\"namespace\":\"org.librairy.service.space.facade.model\",\"fields\":[{\"name\":\"id\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"name\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"},\"default\":\"unknown\"},{\"name\":\"type\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"},\"default\":\"document\"},{\"name\":\"shape\",\"type\":{\"type\":\"array\",\"items\":\"double\"}}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
    private java.lang.String id;
    private java.lang.String name;
