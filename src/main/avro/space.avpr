@@ -9,7 +9,9 @@
       {"name":"shape","type":{"type" : "array","items":"double"}}
     ]},
      {"name": "Neighbour", "type": "record", "fields": [
-       {"name":"point","type":"Point"},
+       {"name":"id","type":"string"},
+       {"name":"name","type":"string","default": ""},
+       {"name":"type","type":"string","default": ""},
        {"name":"score","type":"double"}
      ]}
  ],

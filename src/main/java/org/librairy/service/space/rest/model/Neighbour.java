@@ -34,9 +34,21 @@ public class Neighbour extends org.librairy.service.space.facade.model.Neighbour
 
 
     @Override
-    @ApiModelProperty(value = "related point")
-    public Point getPoint() {
-        return new Point(super.getPoint());
+    @ApiModelProperty(value = "unique identifier")
+    public String getId() {
+        return super.getId();
+    }
+
+    @Override
+    @ApiModelProperty(value = "label")
+    public String getName() {
+        return super.getName();
+    }
+
+    @Override
+    @ApiModelProperty(value = "point class")
+    public String getType() {
+        return super.getType();
     }
 
     @Override
