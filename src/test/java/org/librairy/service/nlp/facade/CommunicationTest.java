@@ -25,17 +25,17 @@ public class CommunicationTest {
         SpaceService customService = new SpaceService() {
 
             @Override
-            public boolean add(Point point) throws AvroRemoteException {
+            public boolean addPoint(Point point) throws AvroRemoteException {
                 return false;
             }
 
             @Override
-            public Point get(String id) throws AvroRemoteException {
+            public Point getPoint(String id) throws AvroRemoteException {
                 return Point.newBuilder().setId(id).setName("example").setShape(Arrays.asList(new Double[]{0.1,0.8,0.1})).build();
             }
 
             @Override
-            public boolean remove(String id) throws AvroRemoteException {
+            public boolean removePoint(String id) throws AvroRemoteException {
                 return false;
             }
 
@@ -45,7 +45,7 @@ public class CommunicationTest {
             }
 
             @Override
-            public List<Point> list(int size, String offset) throws AvroRemoteException {
+            public List<Point> listPoints(int size, String offset) throws AvroRemoteException {
                 return Collections.emptyList();
             }
 
@@ -55,12 +55,17 @@ public class CommunicationTest {
             }
 
             @Override
-            public List<Neighbour> neighbours(String id, int number, String type) throws AvroRemoteException {
+            public boolean isIndexed() throws AvroRemoteException {
+                return false;
+            }
+
+            @Override
+            public List<Neighbour> getNeighbours(String id, int number, String type) throws AvroRemoteException {
                 return Collections.emptyList();
             }
 
             @Override
-            public List<Neighbour> similar(List<Double> shape, int number, String type) throws AvroRemoteException {
+            public List<Neighbour> getSimilar(List<Double> shape, int number, String type) throws AvroRemoteException {
                 return Collections.emptyList();
             }
         };

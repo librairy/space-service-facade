@@ -17,15 +17,15 @@
  ],
 
  "messages": {
-     "add": {
+     "addPoint": {
        "request": [{"name": "point", "type": "Point"}],
        "response": "boolean"
      },
-     "get": {
+     "getPoint": {
        "request": [{"name": "id", "type": "string"}],
        "response": "Point"
      },
-     "remove":{
+     "removePoint":{
        "request": [{"name": "id", "type": "string"}],
        "response": "boolean"
      },
@@ -33,7 +33,7 @@
        "request": [],
        "response": "boolean"
      },
-     "list":{
+     "listPoints":{
        "request": [{"name": "size", "type": "int"},{"name": "offset", "type": "string"}],
        "response": {"type" : "array","items":"Point"}
      },
@@ -41,11 +41,15 @@
        "request": [{"name": "threshold", "type": "double"}],
        "response": "boolean"
      },
-     "neighbours":{
+     "isIndexed":{
+       "request": [],
+       "response": "boolean"
+     },
+     "getNeighbours":{
        "request": [{"name": "id", "type": "string"},{"name": "number", "type": "int"},{"name": "type", "type": "string", "default": ""}],
        "response": {"type" : "array","items":"Neighbour"}
      },
-     "similar":{
+     "getSimilar":{
        "request": [{"name": "shape", "type": {"type" : "array","items":"double"}},{"name": "number", "type": "int"},{"name": "type", "type": "string", "default": ""}],
        "response": {"type" : "array","items":"Neighbour"}
      }

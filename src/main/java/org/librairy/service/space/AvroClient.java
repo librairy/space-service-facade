@@ -39,7 +39,7 @@ public class AvroClient {
 
         // fill in the Message record and send it
         LOG.debug("Calling proxy.add with:" + point);
-        boolean result = proxy.add(point);
+        boolean result = proxy.addPoint(point);
         LOG.debug("Result: " + result);
         return result;
     }
@@ -48,7 +48,7 @@ public class AvroClient {
 
         // fill in the Message record and send it
         LOG.debug("Calling proxy.get with:" + id);
-        Point result = proxy.get(id);
+        Point result = proxy.getPoint(id);
         LOG.debug("Result: " + result);
         return result;
     }
@@ -57,7 +57,7 @@ public class AvroClient {
 
         // fill in the Message record and send it
         LOG.debug("Calling proxy.remove with id:  \"" + id+"\"");
-        boolean result = proxy.remove(id);
+        boolean result = proxy.removePoint(id);
         LOG.debug("Result: " + result);
         return result;
     }
@@ -75,7 +75,7 @@ public class AvroClient {
 
         // fill in the Message record and send it
         LOG.debug("Calling proxy.list with size: '" + size+"', offset: " + offset);
-        List<Point> result = proxy.list(size,offset == null?"":offset);
+        List<Point> result = proxy.listPoints(size,offset == null?"":offset);
         LOG.debug("Result: " + result);
         return result;
     }
@@ -89,11 +89,20 @@ public class AvroClient {
         return result;
     }
 
+    public Boolean isIndexed() throws AvroRemoteException {
+
+        // fill in the Message record and send it
+        LOG.debug("Calling proxy.isIndexed ");
+        boolean result = proxy.isIndexed();
+        LOG.debug("Result: " + result);
+        return result;
+    }
+
     public List<Neighbour> neighbours(String id, Integer number, String type) throws AvroRemoteException {
 
         // fill in the Message record and send it
         LOG.debug("Calling proxy.neighbours with id: '" + id+"', number: " + number+", type:" + type);
-        List<Neighbour> result = proxy.neighbours(id,number,type == null?"":type);
+        List<Neighbour> result = proxy.getNeighbours(id,number,type == null?"":type);
         LOG.debug("Result: " + result);
         return result;
     }
@@ -102,7 +111,7 @@ public class AvroClient {
 
         // fill in the Message record and send it
         LOG.debug("Calling proxy.similar with shape: '" + shape+"', number: " + number+", type:" + type);
-        List<Neighbour> result = proxy.similar(shape,number,type == null?"":type);
+        List<Neighbour> result = proxy.getSimilar(shape,number,type == null?"":type);
         LOG.debug("Result: " + result);
         return result;
     }
