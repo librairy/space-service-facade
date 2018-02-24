@@ -2,12 +2,16 @@
  "protocol": "SpaceService",
 
  "types": [
-    {"name": "Point", "type": "record", "fields": [
-      {"name":"id","type":"string"},
-      {"name":"name","type":"string","default": "unknown"},
-      {"name":"type","type":"string","default": "document"},
-      {"name":"shape","type":{"type" : "array","items":"double"}}
-    ]},
+      {"name": "Point", "type": "record", "fields": [
+        {"name":"id","type":"string"},
+        {"name":"name","type":"string","default": "unknown"},
+        {"name":"type","type":"string","default": "document"},
+        {"name":"shape","type":{"type" : "array","items":"double"}}
+      ]},
+     {"name": "PointList", "type": "record", "fields": [
+       {"name":"nextPage","type":"string"},
+       {"name":"points","type":{"type" : "array","items":"Point"}}
+     ]},
      {"name": "Neighbour", "type": "record", "fields": [
        {"name":"id","type":"string"},
        {"name":"name","type":"string","default": "unknown"},
@@ -34,8 +38,8 @@
        "response": "boolean"
      },
      "listPoints":{
-       "request": [{"name": "size", "type": "int"},{"name": "offset", "type": "string"}],
-       "response": {"type" : "array","items":"Point"}
+       "request": [{"name": "size", "type": "int"},{"name": "page", "type": "string"}],
+       "response": "PointList"
      },
      "index":{
        "request": [{"name": "threshold", "type": "double"}],
@@ -45,12 +49,16 @@
        "request": [],
        "response": "boolean"
      },
+     "compare":{
+       "request": [{"name":"shape1","type":{"type" : "array","items":"double"}},{"name":"shape2","type":{"type" : "array","items":"double"}}],
+       "response": "double"
+     },
      "getNeighbours":{
-       "request": [{"name": "id", "type": "string"},{"name": "number", "type": "int"},{"name": "type", "type": "string", "default": ""}],
+       "request": [{"name": "id", "type": "string"},{"name": "max", "type": "int"},{"name": "type", "type": "string", "default": ""}],
        "response": {"type" : "array","items":"Neighbour"}
      },
      "getSimilar":{
-       "request": [{"name": "shape", "type": {"type" : "array","items":"double"}},{"name": "number", "type": "int"},{"name": "type", "type": "string", "default": ""}],
+       "request": [{"name": "shape", "type": {"type" : "array","items":"double"}},{"name": "max", "type": "int"},{"name": "type", "type": "string", "default": ""}],
        "response": {"type" : "array","items":"Neighbour"}
      }
  }

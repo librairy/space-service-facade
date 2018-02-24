@@ -6,6 +6,7 @@ import org.librairy.service.space.AvroClient;
 import org.librairy.service.space.AvroServer;
 import org.librairy.service.space.facade.model.Neighbour;
 import org.librairy.service.space.facade.model.Point;
+import org.librairy.service.space.facade.model.PointList;
 import org.librairy.service.space.facade.model.SpaceService;
 
 import java.io.IOException;
@@ -45,8 +46,8 @@ public class CommunicationTest {
             }
 
             @Override
-            public List<Point> listPoints(int size, String offset) throws AvroRemoteException {
-                return Collections.emptyList();
+            public PointList listPoints(int size, String offset) throws AvroRemoteException {
+                return new PointList("", Collections.emptyList());
             }
 
             @Override
@@ -57,6 +58,11 @@ public class CommunicationTest {
             @Override
             public boolean isIndexed() throws AvroRemoteException {
                 return false;
+            }
+
+            @Override
+            public double compare(List<Double> shape1, List<Double> shape2) throws AvroRemoteException {
+                return 0;
             }
 
             @Override
@@ -80,14 +86,16 @@ public class CommunicationTest {
         server.open(host,port);
         client.open(host,port);
 
-        client.add(Point.newBuilder().setId("id").setName("name").setShape(Arrays.asList(new Double[]{0.2,0.3})).build());
-        client.get("id");
-        client.remove("id");
+        client.addPoint(Point.newBuilder().setId("id").setName("name").setShape(Arrays.asList(new Double[]{0.2,0.3})).build());
+        client.getPoint("id");
+        client.removePoint("id");
         client.removeAll();
-        client.list(20,null);
+        client.listPoints(20,null);
         client.index(0.9);
-        client.neighbours("id",10,null);
-        client.similar(Arrays.asList(new Double[]{0.1,0.2}),10,"paper");
+        client.isIndexed();
+        client.compare(Arrays.asList(new Double[]{0.1,0.2}),Arrays.asList(new Double[]{0.1,0.2}));
+        client.getNeighbours("id",10,null);
+        client.getSimilar(Arrays.asList(new Double[]{0.1,0.2}),10,"paper");
 
         client.close();
         server.close();

@@ -5,6 +5,7 @@ import org.apache.avro.ipc.NettyTransceiver;
 import org.apache.avro.ipc.specific.SpecificRequestor;
 import org.librairy.service.space.facade.model.Neighbour;
 import org.librairy.service.space.facade.model.Point;
+import org.librairy.service.space.facade.model.PointList;
 import org.librairy.service.space.facade.model.SpaceService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -35,7 +36,7 @@ public class AvroClient {
         if (client != null) client.close();
     }
 
-    public Boolean add(Point point) throws AvroRemoteException {
+    public Boolean addPoint(Point point) throws AvroRemoteException {
 
         // fill in the Message record and send it
         LOG.debug("Calling proxy.add with:" + point);
@@ -44,7 +45,7 @@ public class AvroClient {
         return result;
     }
 
-    public Point get(String id) throws AvroRemoteException {
+    public Point getPoint(String id) throws AvroRemoteException {
 
         // fill in the Message record and send it
         LOG.debug("Calling proxy.get with:" + id);
@@ -53,7 +54,7 @@ public class AvroClient {
         return result;
     }
 
-    public Boolean remove(String id) throws AvroRemoteException {
+    public Boolean removePoint(String id) throws AvroRemoteException {
 
         // fill in the Message record and send it
         LOG.debug("Calling proxy.remove with id:  \"" + id+"\"");
@@ -71,11 +72,11 @@ public class AvroClient {
         return result;
     }
 
-    public List<Point> list(Integer size, String offset) throws AvroRemoteException {
+    public PointList listPoints(Integer size, String offset) throws AvroRemoteException {
 
         // fill in the Message record and send it
         LOG.debug("Calling proxy.list with size: '" + size+"', offset: " + offset);
-        List<Point> result = proxy.listPoints(size,offset == null?"":offset);
+        PointList result = proxy.listPoints(size,offset == null?"":offset);
         LOG.debug("Result: " + result);
         return result;
     }
@@ -98,7 +99,16 @@ public class AvroClient {
         return result;
     }
 
-    public List<Neighbour> neighbours(String id, Integer number, String type) throws AvroRemoteException {
+    public Double compare(List<Double> shape1, List<Double> shape2) throws AvroRemoteException {
+
+        // fill in the Message record and send it
+        LOG.debug("Calling proxy.compare ");
+        Double result = proxy.compare(shape1,shape2);
+        LOG.debug("Result: " + result);
+        return result;
+    }
+
+    public List<Neighbour> getNeighbours(String id, Integer number, String type) throws AvroRemoteException {
 
         // fill in the Message record and send it
         LOG.debug("Calling proxy.neighbours with id: '" + id+"', number: " + number+", type:" + type);
@@ -107,7 +117,7 @@ public class AvroClient {
         return result;
     }
 
-    public List<Neighbour> similar(List<Double> shape, Integer number, String type) throws AvroRemoteException {
+    public List<Neighbour> getSimilar(List<Double> shape, Integer number, String type) throws AvroRemoteException {
 
         // fill in the Message record and send it
         LOG.debug("Calling proxy.similar with shape: '" + shape+"', number: " + number+", type:" + type);
