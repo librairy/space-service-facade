@@ -108,20 +108,20 @@ public class AvroClient {
         return result;
     }
 
-    public List<Neighbour> getNeighbours(String id, Integer number, String type) throws AvroRemoteException {
+    public List<Neighbour> getNeighbours(String id, Integer number, List<String> types) throws AvroRemoteException {
 
         // fill in the Message record and send it
-        LOG.debug("Calling proxy.neighbours with id: '" + id+"', number: " + number+", type:" + type);
-        List<Neighbour> result = proxy.getNeighbours(id,number,type == null?"":type);
+        LOG.debug("Calling proxy.neighbours with id: '" + id+"', number: " + number+", types:" + types);
+        List<Neighbour> result = proxy.getNeighbours(id,number,types);
         LOG.debug("Result: " + result);
         return result;
     }
 
-    public List<Neighbour> getSimilar(List<Double> shape, Integer number, String type) throws AvroRemoteException {
+    public List<Neighbour> getSimilar(List<Double> shape, Integer number, List<String> types) throws AvroRemoteException {
 
         // fill in the Message record and send it
-        LOG.debug("Calling proxy.similar with shape: '" + shape+"', number: " + number+", type:" + type);
-        List<Neighbour> result = proxy.getSimilar(shape,number,type == null?"":type);
+        LOG.debug("Calling proxy.similar with shape: '" + shape+"', number: " + number+", types:" + types);
+        List<Neighbour> result = proxy.getSimilar(shape,number,types);
         LOG.debug("Result: " + result);
         return result;
     }

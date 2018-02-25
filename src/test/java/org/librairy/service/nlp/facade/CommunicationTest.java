@@ -66,12 +66,12 @@ public class CommunicationTest {
             }
 
             @Override
-            public List<Neighbour> getNeighbours(String id, int number, String type) throws AvroRemoteException {
+            public List<Neighbour> getNeighbours(String id, int number, List<String> types) throws AvroRemoteException {
                 return Collections.emptyList();
             }
 
             @Override
-            public List<Neighbour> getSimilar(List<Double> shape, int number, String type) throws AvroRemoteException {
+            public List<Neighbour> getSimilar(List<Double> shape, int number, List<String> types) throws AvroRemoteException {
                 return Collections.emptyList();
             }
         };
@@ -95,7 +95,7 @@ public class CommunicationTest {
         client.isIndexed();
         client.compare(Arrays.asList(new Double[]{0.1,0.2}),Arrays.asList(new Double[]{0.1,0.2}));
         client.getNeighbours("id",10,null);
-        client.getSimilar(Arrays.asList(new Double[]{0.1,0.2}),10,"paper");
+        client.getSimilar(Arrays.asList(new Double[]{0.1,0.2}),10,Arrays.asList(new String[]{"paper"}));
 
         client.close();
         server.close();
