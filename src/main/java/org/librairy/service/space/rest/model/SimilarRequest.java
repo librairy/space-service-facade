@@ -17,12 +17,12 @@ public class SimilarRequest {
     private Integer number;
 
     @ApiModelProperty(notes="filter points by this value")
-    private String type;
+    private List<String> types;
 
-    public SimilarRequest(List<Double> shape, Integer number, String type) {
+    public SimilarRequest(List<Double> shape, Integer number, List<String> types) {
         this.shape = shape;
         this.number = number;
-        this.type = type;
+        this.types = types;
     }
 
     public SimilarRequest(){};
@@ -35,7 +35,7 @@ public class SimilarRequest {
         return number;
     }
 
-    public String getType() {
-        return type;
+    public List<String> getTypes() {
+        return types;
     }
 }

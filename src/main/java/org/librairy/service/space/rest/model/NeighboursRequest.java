@@ -2,6 +2,8 @@ package org.librairy.service.space.rest.model;
 
 import io.swagger.annotations.ApiModelProperty;
 
+import java.util.List;
+
 /**
  * @author Badenes Olmedo, Carlos <cbadenes@fi.upm.es>
  */
@@ -15,12 +17,12 @@ public class NeighboursRequest {
     private Integer number;
 
     @ApiModelProperty(notes="filter points by this value")
-    private String type;
+    private List<String> types;
 
-    public NeighboursRequest(String id, Integer number, String type) {
+    public NeighboursRequest(String id, Integer number, List<String> types) {
         this.id = id;
         this.number = number;
-        this.type = type;
+        this.types = types;
     }
 
     public NeighboursRequest(){};
@@ -33,7 +35,7 @@ public class NeighboursRequest {
         return number;
     }
 
-    public String getType() {
-        return type;
+    public List<String> getTypes() {
+        return types;
     }
 }
