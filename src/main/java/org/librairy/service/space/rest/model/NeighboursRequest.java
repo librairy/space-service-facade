@@ -19,10 +19,14 @@ public class NeighboursRequest {
     @ApiModelProperty(notes="filter points by this value")
     private List<String> types;
 
-    public NeighboursRequest(String id, Integer number, List<String> types) {
+    @ApiModelProperty(notes="compare to all points")
+    private Boolean force;
+
+    public NeighboursRequest(String id, Integer number, List<String> types, Boolean force) {
         this.id = id;
         this.number = number;
         this.types = types;
+        this.force = force;
     }
 
     public NeighboursRequest(){};
@@ -37,5 +41,9 @@ public class NeighboursRequest {
 
     public List<String> getTypes() {
         return types;
+    }
+
+    public Boolean getForce() {
+        return force;
     }
 }

@@ -19,10 +19,14 @@ public class SimilarRequest {
     @ApiModelProperty(notes="filter points by this value")
     private List<String> types;
 
-    public SimilarRequest(List<Double> shape, Integer number, List<String> types) {
+    @ApiModelProperty(notes="compare to all points")
+    private Boolean force;
+
+    public SimilarRequest(List<Double> shape, Integer number, List<String> types, Boolean force) {
         this.shape = shape;
         this.number = number;
         this.types = types;
+        this.force = force;
     }
 
     public SimilarRequest(){};
@@ -37,5 +41,9 @@ public class SimilarRequest {
 
     public List<String> getTypes() {
         return types;
+    }
+
+    public Boolean getForce() {
+        return force;
     }
 }
