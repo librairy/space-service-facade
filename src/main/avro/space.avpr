@@ -54,11 +54,11 @@
        "response": "double"
      },
      "getNeighbours":{
-       "request": [{"name": "id", "type": "string"},{"name": "max", "type": "int"},{"name": "types", "type": {"type" : "array","items":"string"}, "default": []}],
+       "request": [{"name": "id", "type": "string"},{"name": "max", "type": "int"},{"name": "types", "type": {"type" : "array","items":"string"}, "default": []},{"name":"force","type":"boolean","default":"false"}],
        "response": {"type" : "array","items":"Neighbour"}
      },
      "getSimilar":{
-       "request": [{"name": "shape", "type": {"type" : "array","items":"double"}},{"name": "max", "type": "int"},{"name": "type", "type": {"type" : "array","items":"string"}, "default": []}],
+       "request": [{"name": "shape", "type": {"type" : "array","items":"double"}},{"name": "max", "type": "int"},{"name": "type", "type": {"type" : "array","items":"string"}, "default": []},{"name":"force","type":"boolean","default":"false"}],
        "response": {"type" : "array","items":"Neighbour"}
      }
  }
