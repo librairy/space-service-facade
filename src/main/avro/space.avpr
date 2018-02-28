@@ -9,6 +9,7 @@
         {"name":"shape","type":{"type" : "array","items":"double"}}
       ]},
      {"name": "PointList", "type": "record", "fields": [
+       {"name":"total","type":"long"},
        {"name":"nextPage","type":"string"},
        {"name":"points","type":{"type" : "array","items":"Point"}}
      ]},
@@ -17,6 +18,23 @@
        {"name":"name","type":"string","default": "unknown"},
        {"name":"type","type":"string","default": "document"},
        {"name":"score","type":"double"}
+     ]},
+     {"name": "Stats", "type": "record", "fields": [
+       {"name":"total","type":"long","default": 0},
+       {"name":"min","type":"long","default": 0},
+       {"name":"max","type":"long","default": 0},
+       {"name":"mean","type":"double","default":0.0},
+       {"name":"median","type":"double","default":0.0},
+       {"name":"mode","type":"double","default":0.0},
+       {"name":"var","type":"double","default":0.0},
+       {"name":"dev","type":"double","default":0.0}
+     ]},
+     {"name": "Summary", "type": "record", "fields": [
+       {"name":"threshold","type":"double","default": 0.0},
+       {"name":"points","type":"long","default": 0},
+       {"name":"edges","type":"long","default": 0},
+       {"name":"types","type":["null", {"type": "map", "values": "long"}], "default":null},
+       {"name":"clusters","type":["null", "Stats"], "default":null}
      ]}
  ],
 
@@ -60,6 +78,10 @@
      "getSimilar":{
        "request": [{"name": "shape", "type": {"type" : "array","items":"double"}},{"name": "max", "type": "int"},{"name": "type", "type": {"type" : "array","items":"string"}, "default": []},{"name":"force","type":"boolean","default":false}],
        "response": {"type" : "array","items":"Neighbour"}
+     },
+     "getSummary":{
+       "request": [],
+       "response": "Summary"
      }
  }
 }

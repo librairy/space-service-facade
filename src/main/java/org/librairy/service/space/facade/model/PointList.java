@@ -7,8 +7,9 @@ package org.librairy.service.space.facade.model;
 @SuppressWarnings("all")
 @org.apache.avro.specific.AvroGenerated
 public class PointList extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"PointList\",\"namespace\":\"org.librairy.service.space.facade.model\",\"fields\":[{\"name\":\"nextPage\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"points\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"Point\",\"fields\":[{\"name\":\"id\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"name\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"},\"default\":\"unknown\"},{\"name\":\"type\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"},\"default\":\"document\"},{\"name\":\"shape\",\"type\":{\"type\":\"array\",\"items\":\"double\"}}]}}}]}");
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"PointList\",\"namespace\":\"org.librairy.service.space.facade.model\",\"fields\":[{\"name\":\"total\",\"type\":\"long\"},{\"name\":\"nextPage\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"points\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"Point\",\"fields\":[{\"name\":\"id\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"name\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"},\"default\":\"unknown\"},{\"name\":\"type\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"},\"default\":\"document\"},{\"name\":\"shape\",\"type\":{\"type\":\"array\",\"items\":\"double\"}}]}}}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
+   private long total;
    private java.lang.String nextPage;
    private java.util.List<org.librairy.service.space.facade.model.Point> points;
 
@@ -22,7 +23,8 @@ public class PointList extends org.apache.avro.specific.SpecificRecordBase imple
   /**
    * All-args constructor.
    */
-  public PointList(java.lang.String nextPage, java.util.List<org.librairy.service.space.facade.model.Point> points) {
+  public PointList(java.lang.Long total, java.lang.String nextPage, java.util.List<org.librairy.service.space.facade.model.Point> points) {
+    this.total = total;
     this.nextPage = nextPage;
     this.points = points;
   }
@@ -31,8 +33,9 @@ public class PointList extends org.apache.avro.specific.SpecificRecordBase imple
   // Used by DatumWriter.  Applications should not call. 
   public java.lang.Object get(int field$) {
     switch (field$) {
-    case 0: return nextPage;
-    case 1: return points;
+    case 0: return total;
+    case 1: return nextPage;
+    case 2: return points;
     default: throw new org.apache.avro.AvroRuntimeException("Bad index");
     }
   }
@@ -40,10 +43,26 @@ public class PointList extends org.apache.avro.specific.SpecificRecordBase imple
   @SuppressWarnings(value="unchecked")
   public void put(int field$, java.lang.Object value$) {
     switch (field$) {
-    case 0: nextPage = (java.lang.String)value$; break;
-    case 1: points = (java.util.List<org.librairy.service.space.facade.model.Point>)value$; break;
+    case 0: total = (java.lang.Long)value$; break;
+    case 1: nextPage = (java.lang.String)value$; break;
+    case 2: points = (java.util.List<org.librairy.service.space.facade.model.Point>)value$; break;
     default: throw new org.apache.avro.AvroRuntimeException("Bad index");
     }
+  }
+
+  /**
+   * Gets the value of the 'total' field.
+   */
+  public java.lang.Long getTotal() {
+    return total;
+  }
+
+  /**
+   * Sets the value of the 'total' field.
+   * @param value the value to set.
+   */
+  public void setTotal(java.lang.Long value) {
+    this.total = value;
   }
 
   /**
@@ -97,6 +116,7 @@ public class PointList extends org.apache.avro.specific.SpecificRecordBase imple
   public static class Builder extends org.apache.avro.specific.SpecificRecordBuilderBase<PointList>
     implements org.apache.avro.data.RecordBuilder<PointList> {
 
+    private long total;
     private java.lang.String nextPage;
     private java.util.List<org.librairy.service.space.facade.model.Point> points;
 
@@ -108,27 +128,59 @@ public class PointList extends org.apache.avro.specific.SpecificRecordBase imple
     /** Creates a Builder by copying an existing Builder */
     private Builder(org.librairy.service.space.facade.model.PointList.Builder other) {
       super(other);
-      if (isValidValue(fields()[0], other.nextPage)) {
-        this.nextPage = data().deepCopy(fields()[0].schema(), other.nextPage);
+      if (isValidValue(fields()[0], other.total)) {
+        this.total = data().deepCopy(fields()[0].schema(), other.total);
         fieldSetFlags()[0] = true;
       }
-      if (isValidValue(fields()[1], other.points)) {
-        this.points = data().deepCopy(fields()[1].schema(), other.points);
+      if (isValidValue(fields()[1], other.nextPage)) {
+        this.nextPage = data().deepCopy(fields()[1].schema(), other.nextPage);
         fieldSetFlags()[1] = true;
+      }
+      if (isValidValue(fields()[2], other.points)) {
+        this.points = data().deepCopy(fields()[2].schema(), other.points);
+        fieldSetFlags()[2] = true;
       }
     }
     
     /** Creates a Builder by copying an existing PointList instance */
     private Builder(org.librairy.service.space.facade.model.PointList other) {
             super(org.librairy.service.space.facade.model.PointList.SCHEMA$);
-      if (isValidValue(fields()[0], other.nextPage)) {
-        this.nextPage = data().deepCopy(fields()[0].schema(), other.nextPage);
+      if (isValidValue(fields()[0], other.total)) {
+        this.total = data().deepCopy(fields()[0].schema(), other.total);
         fieldSetFlags()[0] = true;
       }
-      if (isValidValue(fields()[1], other.points)) {
-        this.points = data().deepCopy(fields()[1].schema(), other.points);
+      if (isValidValue(fields()[1], other.nextPage)) {
+        this.nextPage = data().deepCopy(fields()[1].schema(), other.nextPage);
         fieldSetFlags()[1] = true;
       }
+      if (isValidValue(fields()[2], other.points)) {
+        this.points = data().deepCopy(fields()[2].schema(), other.points);
+        fieldSetFlags()[2] = true;
+      }
+    }
+
+    /** Gets the value of the 'total' field */
+    public java.lang.Long getTotal() {
+      return total;
+    }
+    
+    /** Sets the value of the 'total' field */
+    public org.librairy.service.space.facade.model.PointList.Builder setTotal(long value) {
+      validate(fields()[0], value);
+      this.total = value;
+      fieldSetFlags()[0] = true;
+      return this; 
+    }
+    
+    /** Checks whether the 'total' field has been set */
+    public boolean hasTotal() {
+      return fieldSetFlags()[0];
+    }
+    
+    /** Clears the value of the 'total' field */
+    public org.librairy.service.space.facade.model.PointList.Builder clearTotal() {
+      fieldSetFlags()[0] = false;
+      return this;
     }
 
     /** Gets the value of the 'nextPage' field */
@@ -138,21 +190,21 @@ public class PointList extends org.apache.avro.specific.SpecificRecordBase imple
     
     /** Sets the value of the 'nextPage' field */
     public org.librairy.service.space.facade.model.PointList.Builder setNextPage(java.lang.String value) {
-      validate(fields()[0], value);
+      validate(fields()[1], value);
       this.nextPage = value;
-      fieldSetFlags()[0] = true;
+      fieldSetFlags()[1] = true;
       return this; 
     }
     
     /** Checks whether the 'nextPage' field has been set */
     public boolean hasNextPage() {
-      return fieldSetFlags()[0];
+      return fieldSetFlags()[1];
     }
     
     /** Clears the value of the 'nextPage' field */
     public org.librairy.service.space.facade.model.PointList.Builder clearNextPage() {
       nextPage = null;
-      fieldSetFlags()[0] = false;
+      fieldSetFlags()[1] = false;
       return this;
     }
 
@@ -163,21 +215,21 @@ public class PointList extends org.apache.avro.specific.SpecificRecordBase imple
     
     /** Sets the value of the 'points' field */
     public org.librairy.service.space.facade.model.PointList.Builder setPoints(java.util.List<org.librairy.service.space.facade.model.Point> value) {
-      validate(fields()[1], value);
+      validate(fields()[2], value);
       this.points = value;
-      fieldSetFlags()[1] = true;
+      fieldSetFlags()[2] = true;
       return this; 
     }
     
     /** Checks whether the 'points' field has been set */
     public boolean hasPoints() {
-      return fieldSetFlags()[1];
+      return fieldSetFlags()[2];
     }
     
     /** Clears the value of the 'points' field */
     public org.librairy.service.space.facade.model.PointList.Builder clearPoints() {
       points = null;
-      fieldSetFlags()[1] = false;
+      fieldSetFlags()[2] = false;
       return this;
     }
 
@@ -185,8 +237,9 @@ public class PointList extends org.apache.avro.specific.SpecificRecordBase imple
     public PointList build() {
       try {
         PointList record = new PointList();
-        record.nextPage = fieldSetFlags()[0] ? this.nextPage : (java.lang.String) defaultValue(fields()[0]);
-        record.points = fieldSetFlags()[1] ? this.points : (java.util.List<org.librairy.service.space.facade.model.Point>) defaultValue(fields()[1]);
+        record.total = fieldSetFlags()[0] ? this.total : (java.lang.Long) defaultValue(fields()[0]);
+        record.nextPage = fieldSetFlags()[1] ? this.nextPage : (java.lang.String) defaultValue(fields()[1]);
+        record.points = fieldSetFlags()[2] ? this.points : (java.util.List<org.librairy.service.space.facade.model.Point>) defaultValue(fields()[2]);
         return record;
       } catch (Exception e) {
         throw new org.apache.avro.AvroRuntimeException(e);

@@ -4,10 +4,7 @@ import org.apache.avro.AvroRemoteException;
 import org.junit.Test;
 import org.librairy.service.space.AvroClient;
 import org.librairy.service.space.AvroServer;
-import org.librairy.service.space.facade.model.Neighbour;
-import org.librairy.service.space.facade.model.Point;
-import org.librairy.service.space.facade.model.PointList;
-import org.librairy.service.space.facade.model.SpaceService;
+import org.librairy.service.space.facade.model.*;
 
 import java.io.IOException;
 import java.util.Arrays;
@@ -47,7 +44,7 @@ public class CommunicationTest {
 
             @Override
             public PointList listPoints(int size, String offset) throws AvroRemoteException {
-                return new PointList("", Collections.emptyList());
+                return new PointList(0l, "", Collections.emptyList());
             }
 
             @Override
@@ -74,6 +71,11 @@ public class CommunicationTest {
             public List<Neighbour> getSimilar(List<Double> shape, int number, List<String> types, boolean force) throws AvroRemoteException {
                 return Collections.emptyList();
             }
+
+            @Override
+            public Summary getSummary() throws AvroRemoteException {
+                return new Summary();
+            }
         };
         AvroServer server = new AvroServer(customService);
 
@@ -96,6 +98,7 @@ public class CommunicationTest {
         client.compare(Arrays.asList(new Double[]{0.1,0.2}),Arrays.asList(new Double[]{0.1,0.2}));
         client.getNeighbours("id",10,Collections.emptyList(), false);
         client.getSimilar(Arrays.asList(new Double[]{0.1,0.2}),10,Arrays.asList(new String[]{"paper"}),false);
+        client.getSummary();
 
         client.close();
         server.close();

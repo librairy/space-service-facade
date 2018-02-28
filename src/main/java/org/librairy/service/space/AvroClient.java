@@ -3,10 +3,7 @@ package org.librairy.service.space;
 import org.apache.avro.AvroRemoteException;
 import org.apache.avro.ipc.NettyTransceiver;
 import org.apache.avro.ipc.specific.SpecificRequestor;
-import org.librairy.service.space.facade.model.Neighbour;
-import org.librairy.service.space.facade.model.Point;
-import org.librairy.service.space.facade.model.PointList;
-import org.librairy.service.space.facade.model.SpaceService;
+import org.librairy.service.space.facade.model.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -122,6 +119,15 @@ public class AvroClient {
         // fill in the Message record and send it
         LOG.debug("Calling proxy.similar with shape: '" + shape+"', number: " + number+", types:" + types);
         List<Neighbour> result = proxy.getSimilar(shape,number,types,force);
+        LOG.debug("Result: " + result);
+        return result;
+    }
+
+    public Summary getSummary() throws AvroRemoteException {
+
+        // fill in the Message record and send it
+        LOG.debug("Calling proxy.summary");
+        Summary result = proxy.getSummary();
         LOG.debug("Result: " + result);
         return result;
     }
