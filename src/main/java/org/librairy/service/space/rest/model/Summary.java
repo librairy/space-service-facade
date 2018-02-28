@@ -6,7 +6,6 @@ import io.swagger.annotations.ApiModelProperty;
 import org.apache.avro.Schema;
 import org.apache.commons.beanutils.BeanUtils;
 import org.librairy.service.space.facade.model.*;
-import org.librairy.service.space.facade.model.Stats;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
@@ -38,11 +37,16 @@ public class Summary extends org.librairy.service.space.facade.model.Summary {
         return super.getSchema();
     }
 
-
     @Override
     @ApiModelProperty(value = "total number of points")
     public Long getPoints() {
         return super.getPoints();
+    }
+
+    @Override
+    @ApiModelProperty(value = "total number of indexed points")
+    public Long getIndexes() {
+        return super.getIndexes();
     }
 
     @Override
@@ -67,6 +71,6 @@ public class Summary extends org.librairy.service.space.facade.model.Summary {
     @Override
     @ApiModelProperty(value="cluster statistics")
     public Stats getClusters() {
-        return super.getClusters();
+        return new org.librairy.service.space.rest.model.Stats(super.getClusters());
     }
 }
