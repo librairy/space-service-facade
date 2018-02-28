@@ -50,6 +50,12 @@ public class Summary extends org.librairy.service.space.facade.model.Summary {
     }
 
     @Override
+    @ApiModelProperty(value = "vector dimensions")
+    public Integer getDimensions() {
+        return super.getDimensions();
+    }
+
+    @Override
     @ApiModelProperty(value = "total number of edges")
     public Long getEdges() {
         return super.getEdges();

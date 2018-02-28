@@ -7,11 +7,12 @@ package org.librairy.service.space.facade.model;
 @SuppressWarnings("all")
 @org.apache.avro.specific.AvroGenerated
 public class Summary extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"Summary\",\"namespace\":\"org.librairy.service.space.facade.model\",\"fields\":[{\"name\":\"threshold\",\"type\":\"double\",\"default\":0.0},{\"name\":\"points\",\"type\":\"long\",\"default\":0},{\"name\":\"indexes\",\"type\":\"long\",\"default\":0},{\"name\":\"edges\",\"type\":\"long\",\"default\":0},{\"name\":\"types\",\"type\":[\"null\",{\"type\":\"map\",\"values\":\"long\",\"avro.java.string\":\"String\"}],\"default\":null},{\"name\":\"clusters\",\"type\":[\"null\",{\"type\":\"record\",\"name\":\"Stats\",\"fields\":[{\"name\":\"total\",\"type\":\"long\",\"default\":0},{\"name\":\"min\",\"type\":\"long\",\"default\":0},{\"name\":\"max\",\"type\":\"long\",\"default\":0},{\"name\":\"mean\",\"type\":\"double\",\"default\":0.0},{\"name\":\"median\",\"type\":\"double\",\"default\":0.0},{\"name\":\"mode\",\"type\":\"double\",\"default\":0.0},{\"name\":\"var\",\"type\":\"double\",\"default\":0.0},{\"name\":\"dev\",\"type\":\"double\",\"default\":0.0}]}],\"default\":null}]}");
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"Summary\",\"namespace\":\"org.librairy.service.space.facade.model\",\"fields\":[{\"name\":\"threshold\",\"type\":\"double\",\"default\":0.0},{\"name\":\"points\",\"type\":\"long\",\"default\":0},{\"name\":\"indexes\",\"type\":\"long\",\"default\":0},{\"name\":\"dimensions\",\"type\":\"int\",\"default\":0},{\"name\":\"edges\",\"type\":\"long\",\"default\":0},{\"name\":\"types\",\"type\":[\"null\",{\"type\":\"map\",\"values\":\"long\",\"avro.java.string\":\"String\"}],\"default\":null},{\"name\":\"clusters\",\"type\":[\"null\",{\"type\":\"record\",\"name\":\"Stats\",\"fields\":[{\"name\":\"total\",\"type\":\"long\",\"default\":0},{\"name\":\"min\",\"type\":\"long\",\"default\":0},{\"name\":\"max\",\"type\":\"long\",\"default\":0},{\"name\":\"mean\",\"type\":\"double\",\"default\":0.0},{\"name\":\"median\",\"type\":\"double\",\"default\":0.0},{\"name\":\"mode\",\"type\":\"double\",\"default\":0.0},{\"name\":\"var\",\"type\":\"double\",\"default\":0.0},{\"name\":\"dev\",\"type\":\"double\",\"default\":0.0}]}],\"default\":null}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
    private double threshold;
    private long points;
    private long indexes;
+   private int dimensions;
    private long edges;
    private java.util.Map<java.lang.String,java.lang.Long> types;
    private org.librairy.service.space.facade.model.Stats clusters;
@@ -26,10 +27,11 @@ public class Summary extends org.apache.avro.specific.SpecificRecordBase impleme
   /**
    * All-args constructor.
    */
-  public Summary(java.lang.Double threshold, java.lang.Long points, java.lang.Long indexes, java.lang.Long edges, java.util.Map<java.lang.String,java.lang.Long> types, org.librairy.service.space.facade.model.Stats clusters) {
+  public Summary(java.lang.Double threshold, java.lang.Long points, java.lang.Long indexes, java.lang.Integer dimensions, java.lang.Long edges, java.util.Map<java.lang.String,java.lang.Long> types, org.librairy.service.space.facade.model.Stats clusters) {
     this.threshold = threshold;
     this.points = points;
     this.indexes = indexes;
+    this.dimensions = dimensions;
     this.edges = edges;
     this.types = types;
     this.clusters = clusters;
@@ -42,9 +44,10 @@ public class Summary extends org.apache.avro.specific.SpecificRecordBase impleme
     case 0: return threshold;
     case 1: return points;
     case 2: return indexes;
-    case 3: return edges;
-    case 4: return types;
-    case 5: return clusters;
+    case 3: return dimensions;
+    case 4: return edges;
+    case 5: return types;
+    case 6: return clusters;
     default: throw new org.apache.avro.AvroRuntimeException("Bad index");
     }
   }
@@ -55,9 +58,10 @@ public class Summary extends org.apache.avro.specific.SpecificRecordBase impleme
     case 0: threshold = (java.lang.Double)value$; break;
     case 1: points = (java.lang.Long)value$; break;
     case 2: indexes = (java.lang.Long)value$; break;
-    case 3: edges = (java.lang.Long)value$; break;
-    case 4: types = (java.util.Map<java.lang.String,java.lang.Long>)value$; break;
-    case 5: clusters = (org.librairy.service.space.facade.model.Stats)value$; break;
+    case 3: dimensions = (java.lang.Integer)value$; break;
+    case 4: edges = (java.lang.Long)value$; break;
+    case 5: types = (java.util.Map<java.lang.String,java.lang.Long>)value$; break;
+    case 6: clusters = (org.librairy.service.space.facade.model.Stats)value$; break;
     default: throw new org.apache.avro.AvroRuntimeException("Bad index");
     }
   }
@@ -105,6 +109,21 @@ public class Summary extends org.apache.avro.specific.SpecificRecordBase impleme
    */
   public void setIndexes(java.lang.Long value) {
     this.indexes = value;
+  }
+
+  /**
+   * Gets the value of the 'dimensions' field.
+   */
+  public java.lang.Integer getDimensions() {
+    return dimensions;
+  }
+
+  /**
+   * Sets the value of the 'dimensions' field.
+   * @param value the value to set.
+   */
+  public void setDimensions(java.lang.Integer value) {
+    this.dimensions = value;
   }
 
   /**
@@ -176,6 +195,7 @@ public class Summary extends org.apache.avro.specific.SpecificRecordBase impleme
     private double threshold;
     private long points;
     private long indexes;
+    private int dimensions;
     private long edges;
     private java.util.Map<java.lang.String,java.lang.Long> types;
     private org.librairy.service.space.facade.model.Stats clusters;
@@ -200,17 +220,21 @@ public class Summary extends org.apache.avro.specific.SpecificRecordBase impleme
         this.indexes = data().deepCopy(fields()[2].schema(), other.indexes);
         fieldSetFlags()[2] = true;
       }
-      if (isValidValue(fields()[3], other.edges)) {
-        this.edges = data().deepCopy(fields()[3].schema(), other.edges);
+      if (isValidValue(fields()[3], other.dimensions)) {
+        this.dimensions = data().deepCopy(fields()[3].schema(), other.dimensions);
         fieldSetFlags()[3] = true;
       }
-      if (isValidValue(fields()[4], other.types)) {
-        this.types = data().deepCopy(fields()[4].schema(), other.types);
+      if (isValidValue(fields()[4], other.edges)) {
+        this.edges = data().deepCopy(fields()[4].schema(), other.edges);
         fieldSetFlags()[4] = true;
       }
-      if (isValidValue(fields()[5], other.clusters)) {
-        this.clusters = data().deepCopy(fields()[5].schema(), other.clusters);
+      if (isValidValue(fields()[5], other.types)) {
+        this.types = data().deepCopy(fields()[5].schema(), other.types);
         fieldSetFlags()[5] = true;
+      }
+      if (isValidValue(fields()[6], other.clusters)) {
+        this.clusters = data().deepCopy(fields()[6].schema(), other.clusters);
+        fieldSetFlags()[6] = true;
       }
     }
     
@@ -229,17 +253,21 @@ public class Summary extends org.apache.avro.specific.SpecificRecordBase impleme
         this.indexes = data().deepCopy(fields()[2].schema(), other.indexes);
         fieldSetFlags()[2] = true;
       }
-      if (isValidValue(fields()[3], other.edges)) {
-        this.edges = data().deepCopy(fields()[3].schema(), other.edges);
+      if (isValidValue(fields()[3], other.dimensions)) {
+        this.dimensions = data().deepCopy(fields()[3].schema(), other.dimensions);
         fieldSetFlags()[3] = true;
       }
-      if (isValidValue(fields()[4], other.types)) {
-        this.types = data().deepCopy(fields()[4].schema(), other.types);
+      if (isValidValue(fields()[4], other.edges)) {
+        this.edges = data().deepCopy(fields()[4].schema(), other.edges);
         fieldSetFlags()[4] = true;
       }
-      if (isValidValue(fields()[5], other.clusters)) {
-        this.clusters = data().deepCopy(fields()[5].schema(), other.clusters);
+      if (isValidValue(fields()[5], other.types)) {
+        this.types = data().deepCopy(fields()[5].schema(), other.types);
         fieldSetFlags()[5] = true;
+      }
+      if (isValidValue(fields()[6], other.clusters)) {
+        this.clusters = data().deepCopy(fields()[6].schema(), other.clusters);
+        fieldSetFlags()[6] = true;
       }
     }
 
@@ -315,6 +343,30 @@ public class Summary extends org.apache.avro.specific.SpecificRecordBase impleme
       return this;
     }
 
+    /** Gets the value of the 'dimensions' field */
+    public java.lang.Integer getDimensions() {
+      return dimensions;
+    }
+    
+    /** Sets the value of the 'dimensions' field */
+    public org.librairy.service.space.facade.model.Summary.Builder setDimensions(int value) {
+      validate(fields()[3], value);
+      this.dimensions = value;
+      fieldSetFlags()[3] = true;
+      return this; 
+    }
+    
+    /** Checks whether the 'dimensions' field has been set */
+    public boolean hasDimensions() {
+      return fieldSetFlags()[3];
+    }
+    
+    /** Clears the value of the 'dimensions' field */
+    public org.librairy.service.space.facade.model.Summary.Builder clearDimensions() {
+      fieldSetFlags()[3] = false;
+      return this;
+    }
+
     /** Gets the value of the 'edges' field */
     public java.lang.Long getEdges() {
       return edges;
@@ -322,20 +374,20 @@ public class Summary extends org.apache.avro.specific.SpecificRecordBase impleme
     
     /** Sets the value of the 'edges' field */
     public org.librairy.service.space.facade.model.Summary.Builder setEdges(long value) {
-      validate(fields()[3], value);
+      validate(fields()[4], value);
       this.edges = value;
-      fieldSetFlags()[3] = true;
+      fieldSetFlags()[4] = true;
       return this; 
     }
     
     /** Checks whether the 'edges' field has been set */
     public boolean hasEdges() {
-      return fieldSetFlags()[3];
+      return fieldSetFlags()[4];
     }
     
     /** Clears the value of the 'edges' field */
     public org.librairy.service.space.facade.model.Summary.Builder clearEdges() {
-      fieldSetFlags()[3] = false;
+      fieldSetFlags()[4] = false;
       return this;
     }
 
@@ -346,21 +398,21 @@ public class Summary extends org.apache.avro.specific.SpecificRecordBase impleme
     
     /** Sets the value of the 'types' field */
     public org.librairy.service.space.facade.model.Summary.Builder setTypes(java.util.Map<java.lang.String,java.lang.Long> value) {
-      validate(fields()[4], value);
+      validate(fields()[5], value);
       this.types = value;
-      fieldSetFlags()[4] = true;
+      fieldSetFlags()[5] = true;
       return this; 
     }
     
     /** Checks whether the 'types' field has been set */
     public boolean hasTypes() {
-      return fieldSetFlags()[4];
+      return fieldSetFlags()[5];
     }
     
     /** Clears the value of the 'types' field */
     public org.librairy.service.space.facade.model.Summary.Builder clearTypes() {
       types = null;
-      fieldSetFlags()[4] = false;
+      fieldSetFlags()[5] = false;
       return this;
     }
 
@@ -371,21 +423,21 @@ public class Summary extends org.apache.avro.specific.SpecificRecordBase impleme
     
     /** Sets the value of the 'clusters' field */
     public org.librairy.service.space.facade.model.Summary.Builder setClusters(org.librairy.service.space.facade.model.Stats value) {
-      validate(fields()[5], value);
+      validate(fields()[6], value);
       this.clusters = value;
-      fieldSetFlags()[5] = true;
+      fieldSetFlags()[6] = true;
       return this; 
     }
     
     /** Checks whether the 'clusters' field has been set */
     public boolean hasClusters() {
-      return fieldSetFlags()[5];
+      return fieldSetFlags()[6];
     }
     
     /** Clears the value of the 'clusters' field */
     public org.librairy.service.space.facade.model.Summary.Builder clearClusters() {
       clusters = null;
-      fieldSetFlags()[5] = false;
+      fieldSetFlags()[6] = false;
       return this;
     }
 
@@ -396,9 +448,10 @@ public class Summary extends org.apache.avro.specific.SpecificRecordBase impleme
         record.threshold = fieldSetFlags()[0] ? this.threshold : (java.lang.Double) defaultValue(fields()[0]);
         record.points = fieldSetFlags()[1] ? this.points : (java.lang.Long) defaultValue(fields()[1]);
         record.indexes = fieldSetFlags()[2] ? this.indexes : (java.lang.Long) defaultValue(fields()[2]);
-        record.edges = fieldSetFlags()[3] ? this.edges : (java.lang.Long) defaultValue(fields()[3]);
-        record.types = fieldSetFlags()[4] ? this.types : (java.util.Map<java.lang.String,java.lang.Long>) defaultValue(fields()[4]);
-        record.clusters = fieldSetFlags()[5] ? this.clusters : (org.librairy.service.space.facade.model.Stats) defaultValue(fields()[5]);
+        record.dimensions = fieldSetFlags()[3] ? this.dimensions : (java.lang.Integer) defaultValue(fields()[3]);
+        record.edges = fieldSetFlags()[4] ? this.edges : (java.lang.Long) defaultValue(fields()[4]);
+        record.types = fieldSetFlags()[5] ? this.types : (java.util.Map<java.lang.String,java.lang.Long>) defaultValue(fields()[5]);
+        record.clusters = fieldSetFlags()[6] ? this.clusters : (org.librairy.service.space.facade.model.Stats) defaultValue(fields()[6]);
         return record;
       } catch (Exception e) {
         throw new org.apache.avro.AvroRuntimeException(e);

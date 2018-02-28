@@ -33,6 +33,7 @@
        {"name":"threshold","type":"double","default": 0.0},
        {"name":"points","type":"long","default": 0},
        {"name":"indexes","type":"long","default": 0},
+       {"name":"dimensions","type":"int","default": 0},
        {"name":"edges","type":"long","default": 0},
        {"name":"types","type":["null", {"type": "map", "values": "long"}], "default":null},
        {"name":"clusters","type":["null", "Stats"], "default":null}
