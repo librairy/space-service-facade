@@ -30,4 +30,12 @@ public class ComparisonRequest {
     public List<Double> getShape2() {
         return shape2;
     }
+
+    public void setShape1(List<Double> shape1) {
+        this.shape1 = shape1;
+    }
+
+    public void setShape2(List<Double> shape2) {
+        this.shape2 = shape2;
+    }
 }

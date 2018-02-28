@@ -30,4 +30,12 @@ public class PointList {
     public String getNextPage() {
         return nextPage;
     }
+
+    public void setPoints(List<Point> points) {
+        this.points = points;
+    }
+
+    public void setNextPage(String nextPage) {
+        this.nextPage = nextPage;
+    }
 }

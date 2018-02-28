@@ -38,4 +38,18 @@ public class NeighboursRequest {
     public Boolean getForce() {
         return force;
     }
+
+    public void setNumber(Integer number) {
+        this.number = number;
+    }
+
+    public void setTypes(List<String> types) {
+        this.types = types;
+    }
+
+    public void setForce(Boolean force) {
+        this.force = force;
+    }
 }
+
+

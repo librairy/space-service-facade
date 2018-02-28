@@ -25,6 +25,9 @@ public class Point extends org.librairy.service.space.facade.model.Point {
         }
     }
 
+    public Point() {
+    }
+
     @Override
     @ApiModelProperty(hidden = true)
     @JsonIgnore

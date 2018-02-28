@@ -25,6 +25,9 @@ public class Neighbour extends org.librairy.service.space.facade.model.Neighbour
         }
     }
 
+    public Neighbour() {
+    }
+
     @Override
     @ApiModelProperty(hidden = true)
     @JsonIgnore
@@ -56,5 +59,7 @@ public class Neighbour extends org.librairy.service.space.facade.model.Neighbour
     public Double getScore() {
         return super.getScore();
     }
+
+
 
 }

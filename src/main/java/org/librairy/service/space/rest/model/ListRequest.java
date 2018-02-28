@@ -29,4 +29,12 @@ public class ListRequest {
     public String getOffset() {
         return offset;
     }
+
+    public void setSize(Integer size) {
+        this.size = size;
+    }
+
+    public void setOffset(String offset) {
+        this.offset = offset;
+    }
 }

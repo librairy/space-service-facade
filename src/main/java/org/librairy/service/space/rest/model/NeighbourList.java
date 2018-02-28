@@ -22,4 +22,8 @@ public class NeighbourList {
     public List<Neighbour> getNeighbours() {
         return neighbours;
     }
+
+    public void setNeighbours(List<Neighbour> neighbours) {
+        this.neighbours = neighbours;
+    }
 }
